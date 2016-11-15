@@ -7,3 +7,5 @@ Java JDK, Eclipse.
 Spring Framework.
 Maven.
 
+Backend Requierments:
+Hibernate ORM tool.
