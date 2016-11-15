@@ -2,18 +2,23 @@ package com.aj.james.backendproject.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 @Entity
+@Table(name="PRODUCT")
+@Component
 public class Product {
 	
 	@Id
-	private int product_id;
+	private String product_id;
 	private String product_name;
 	private String product_description;
-	public int getProduct_id() {
+	public String getProduct_id() {
 		return product_id;
 	}
-	public void setProduct_id(int product_id) {
+	public void setProduct_id(String product_id) {
 		this.product_id = product_id;
 	}
 	public String getProduct_name() {

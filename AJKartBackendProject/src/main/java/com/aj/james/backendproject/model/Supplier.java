@@ -3,24 +3,28 @@ package com.aj.james.backendproject.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 
 
 @Entity
-public class Suppliers {
+@Table(name="SUPPLIER")
+@Component
+public class Supplier {
 
 	@Id
-	@GeneratedValue
-	private int supplier_id;
+	private String supplier_id;
 	private String supplier_name;
 	private String supplier_description;
 	private String supplier_address;
-	private int supplier_contact_number;
+	private String supplier_contact_number;
 	
-	public int getSupplier_id() {
+	public String getSupplier_id() {
 		return supplier_id;
 	}
-	public void setSupplier_id(int supplier_id) {
+	public void setSupplier_id(String supplier_id) {
 		this.supplier_id = supplier_id;
 	}
 	public String getSupplier_name() {
@@ -41,10 +45,10 @@ public class Suppliers {
 	public void setSupplier_address(String supplier_address) {
 		this.supplier_address = supplier_address;
 	}
-	public int getSupplier_contact_number() {
+	public String getSupplier_contact_number() {
 		return supplier_contact_number;
 	}
-	public void setSupplier_contact_number(int supplier_contact_number) {
+	public void setSupplier_contact_number(String supplier_contact_number) {
 		this.supplier_contact_number = supplier_contact_number;
 	}
 	

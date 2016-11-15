@@ -2,18 +2,20 @@ package com.aj.james.backendproject;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.aj.james.backendproject.config.ApplicationConfig;
 import com.aj.james.backendproject.model.Category;
 
 public class CategoryTest {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	private static AnnotationConfigApplicationContext annotationApplication;
 
-		AnnotationConfigApplicationContext annotationApplication = new AnnotationConfigApplicationContext();
+	public static void main(String[] args) {
+			
+		annotationApplication = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 		System.out.println("AppcOntext");
 		
 		annotationApplication.scan("com.aj.james.backendproject");
-		annotationApplication.refresh();
+
 		System.out.println("refresh");
 		
 		Category category =  (Category) annotationApplication.getBean("category");

@@ -3,40 +3,107 @@ package com.aj.james.backendproject.config;
 import java.util.Properties;
 
 import javax.sql.DataSource;
-
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.aj.james.backendproject.model.Category;
 import com.aj.james.backendproject.model.Product;
-import com.aj.james.backendproject.model.Suppliers;
+import com.aj.james.backendproject.model.Supplier;
 import com.aj.james.backendproject.model.User;
 
+
 @Configuration
-@ComponentScan("com.aj.james.backendproject")
+@ComponentScan(basePackages="com.aj.james.backendproject")
 @EnableTransactionManagement
 public class ApplicationConfig {
-	
 		
+	@Autowired
+	@Bean(name="dataSource")
+	public DataSource getDataSource()
+	{
+		System.out.println("get Datasourcemethod called");
+		DriverManagerDataSource  dataSource=new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.h2.Driver");
+		dataSource.setUsername("james");
+		dataSource.setPassword("james@123");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/backend");
+		return dataSource;
+	}
+	private  Properties getHibernateProperties()
+	{
+		Properties properties=new Properties();
+		properties.setProperty("hibernate.show_sql", "true");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		properties.setProperty("hibernate.hbm2ddl.auto", "update");
+		return properties;
+	}
+	@Autowired
+	@Bean(name="sessionFactory")
+	public SessionFactory getSessionFactory(DataSource dataSource)
+	{
+		LocalSessionFactoryBuilder localSessionFactoryBuilder=new LocalSessionFactoryBuilder(dataSource);
+		localSessionFactoryBuilder.addProperties(getHibernateProperties());
+		localSessionFactoryBuilder.addAnnotatedClass(Category.class);
+		localSessionFactoryBuilder.addAnnotatedClass(Product.class);
+		localSessionFactoryBuilder.addAnnotatedClass(Supplier.class);
+		localSessionFactoryBuilder.addAnnotatedClass(User.class);
+		return localSessionFactoryBuilder.buildSessionFactory();
+	}
+	@Autowired
+	@Bean(name="transactionManager")
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
+	{
+		HibernateTransactionManager hibernateTransactionManager=new HibernateTransactionManager(sessionFactory);
+		return hibernateTransactionManager;
+		
+	}
 	
 	
-	    @Autowired
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*@Autowired
 	    @Bean(name = "dataSource")
 	    public DataSource getDataSource() {
 	    	
 	   System.out.println("Hitting th eDB");
-	    BasicDataSource dataSource = new BasicDataSource();
-	    dataSource.setDriverClassName("org.h2.Driver");
-	    dataSource.setUrl("jdbc:h2:tcp://localhost/~/backend");
-	    dataSource.setUsername("james");
-	    dataSource.setPassword("james@123");
+	   DriverManagerDataSource  dataSource=new DriverManagerDataSource();
+	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+	    dataSource.setUrl("jdbc:mysql://localhost:3307/ndb");
+	    dataSource.setUsername("root");
+	    dataSource.setPassword("password@123");
 	   
 	    return dataSource;
 	    }
@@ -46,8 +113,9 @@ public class ApplicationConfig {
 	    	System.out.println("Hitting the Hibernate");
 	    Properties properties = new Properties();
 	    properties.put("hibernate.show_sql", "true");
-	    properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-	    properties.put("hbm2ddl.auto", "update");	   
+	    properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+	    properties.put("hbm2ddl.auto", "create");	
+	    System.out.println("check:"+properties.get("hbm2ddl.auto"));
 	    return properties;
 	    }
 	    
@@ -61,7 +129,9 @@ public class ApplicationConfig {
 	    sessionBuilder.addAnnotatedClasses(Suppliers.class);
 	    sessionBuilder.addAnnotatedClasses(User.class);
 	    sessionBuilder.addAnnotatedClasses(Product.class);
+	    
 	   
+	    sessionBuilder.addAnnotatedClass(Category.class);
 	    return sessionBuilder.buildSessionFactory();
 	    }
 	    
@@ -75,9 +145,16 @@ public class ApplicationConfig {
 
 	return transactionManager;
 	
-	}
-}    
-	   
+*/	}
+	
+	
+	
+
+	
+
+	
+  
+
 
 
 
