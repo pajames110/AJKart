@@ -3,8 +3,11 @@ package com.aj.james.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+
 @Controller
 public class PageController {
+
 	
 	@RequestMapping("/")
 	public String getPage(){
@@ -24,16 +27,14 @@ public class PageController {
 		return "about";
 	}
 	
-	@RequestMapping("/register")
-	public String getRegisterPage(){
-		
-		return "register";
-	}
+	
 	
 	@RequestMapping("/contact")
 	public String getContactPage(){
 		
 		return "contact";
 	}
+	
+	
 
 }

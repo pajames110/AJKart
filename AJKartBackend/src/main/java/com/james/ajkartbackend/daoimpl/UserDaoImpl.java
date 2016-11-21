@@ -10,26 +10,32 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.james.ajkartbackend.dao.CategoryDAO;
-import com.james.ajkartbackend.model.Category;
+import com.james.ajkartbackend.dao.UserDAO;
+import com.james.ajkartbackend.model.User;
+import com.james.ajkartbackend.model.UserRole;
 
-@Repository("categoryDAO")
-public class CategoryDAOImpl implements CategoryDAO{
-
+@Repository("userDAO")
+public class UserDaoImpl implements UserDAO {
+	
 	@Autowired
 	SessionFactory sessionFactory;
 
-	public CategoryDAOImpl(SessionFactory sessionFactory){
+	public UserDaoImpl(SessionFactory sessionFactory){
 		
 		this.sessionFactory = sessionFactory;
 	}
-	
 	@Transactional
-	public boolean save(Category category) {
+	public boolean save(User user) {
 		// TODO Auto-generated method stub
 		
 		try {
-			sessionFactory.openSession().save(category);
+			sessionFactory.openSession().save(user);
+			UserRole userRole = new UserRole();
+			userRole.setUserRole_id(user.getUser_id());
+			userRole.setUser_role("ROLE_USER");
+			sessionFactory.openSession().save(userRole);
+			
+			
 			return true;
 		} catch (HibernateException e) {
 			// TODO Auto-generated catch block
@@ -40,10 +46,10 @@ public class CategoryDAOImpl implements CategoryDAO{
 	}
 	
 	@Transactional
-	public boolean update(Category category) {
+	public boolean update(User user) {
 
 		try {
-			sessionFactory.getCurrentSession().update(category);
+			sessionFactory.getCurrentSession().update(user);
 			return true;
 		} catch (HibernateException e) {
 			// TODO Auto-generated catch block
@@ -54,11 +60,11 @@ public class CategoryDAOImpl implements CategoryDAO{
 	}
 	
 	@Transactional
-	public boolean delete(Category category) {
+	public boolean delete(User user) {
 		// TODO Auto-generated method stub
 		
 		try {
-			sessionFactory.getCurrentSession().delete(category);
+			sessionFactory.getCurrentSession().delete(user);
 			return true;
 		} catch (HibernateException e) {
 			// TODO Auto-generated catch block
@@ -69,15 +75,15 @@ public class CategoryDAOImpl implements CategoryDAO{
 	}
 
 	@Transactional
-	public Category get(String id) {
+	public User get(String id) {
 		// TODO Auto-generated method stub
-		return (Category) sessionFactory.getCurrentSession().get(Category.class, id);
+		return (User) sessionFactory.getCurrentSession().get(User.class, id);
 	}
 	
 	@Transactional
-	public List<Category> list() {
+	public List<User> list() {
 
-		String hql = "from Category";
+		String hql = "from User";
 		
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);

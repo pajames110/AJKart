@@ -17,6 +17,8 @@
     <meta name="description" content="Obaju e-commerce template">
     <meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
     <meta name="keywords" content="">
+   
+    
 
     <title>
        AjKart : e-commerce musical instruments
@@ -32,6 +34,7 @@
     <link href="<c:url value="resources/css/animate.min.css"/>" rel="stylesheet">
     <link href="<c:url value="resources/css/owl.carousel.css"/>" rel="stylesheet">
     <link href="<c:url value="resources/css/owl.theme.css"/>" rel="stylesheet">
+    <link href="<c:url value="resources/css/successnerror.css"/> rel="stylesheet">
 
 
     <!-- theme stylesheet -->
@@ -411,61 +414,15 @@
 
     <div id="all">
 
-        <div id="content">
-            <div class="container">
-
-                <div class="col-md-12">
-
-                    <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
-                        </li>
-                        <li>New account / Sign in</li>
-                    </ul>
-
-                </div>
-
-                <div class="col-md-6">
-                    <div class="box">
-                        <h1>New account</h1>
-
-                        <p class="lead">Not our registered customer yet?</p>
-                        <p>With registration with us new world of music, fantastic experience and much more opens to you! The whole process will not take you more than a minute!</p>
-                        <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
-
-                        <hr>
-
-						<form:errors path="User.*"></form:errors>
-                        <form:form action="register" method="post" commandName="userdetails">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <form:input path="username" type="text" class="form-control" ></form:input>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <form:input path="userEmail" type="text" class="form-control" ></form:input>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <form:input path="password" type="password" class="form-control" ></form:input>
-                            </div>
-                            
-                             <div class="form-group">
-                                <label for="mobile">Mobile Number</label>
-                                <form:input path="user_mobile_number" type="text" class="form-control" ></form:input>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit"  class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
-                            </div>
-                        </form:form>
-                    </div>
-                </div>
+        
+              
 
                 <div class="col-md-6">
                     <div class="box">
                         <h1>Login</h1>
 
-                        <p class="lead">Already our customer?</p>
-                        <p class="text-muted">Log-in and welcome to the world of Music.</p>
+						<div id="display-success"><img src="<c:url value="resources/img/correct.png"/> alt="Success" /> You are successfully Registered, please Log-in to continue.</div>
+                        
 
                         <hr>
 
@@ -518,7 +475,7 @@
                         <ul>
                             <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                             </li>
-                            <li><a href="register">Register</a>
+                            <li><a href="register">Regiter</a>
                             </li>
                         </ul>
 
@@ -636,7 +593,7 @@
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">Â© 2015 Your name goes here.</p>
+                    <p class="pull-left">© 2015 Your name goes here.</p>
 
                 </div>
                 <div class="col-md-6">
