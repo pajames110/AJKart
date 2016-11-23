@@ -33,8 +33,15 @@ public class UserDaoImpl implements UserDAO {
 			UserRole userRole = new UserRole();
 			userRole.setUserRole_id(user.getUser_id());
 			userRole.setUser_role("ROLE_USER");
+			userRole.setUsername(user.getUsername());
+			try{
+				System.out.println("Entering try of save userrole");
 			sessionFactory.openSession().save(userRole);
-			
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			
 			return true;
 		} catch (HibernateException e) {

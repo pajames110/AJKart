@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class User {
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id @GeneratedValue
 	private int user_id;
 	
 	@NotEmpty(message="Name should not be empty")

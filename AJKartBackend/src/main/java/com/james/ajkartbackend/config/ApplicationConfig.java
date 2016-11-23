@@ -17,6 +17,7 @@ import com.james.ajkartbackend.model.Category;
 import com.james.ajkartbackend.model.Product;
 import com.james.ajkartbackend.model.Supplier;
 import com.james.ajkartbackend.model.User;
+import com.james.ajkartbackend.model.UserRole;
 
 
 @Configuration
@@ -54,6 +55,7 @@ public class ApplicationConfig {
 		localSessionFactoryBuilder.addAnnotatedClass(Product.class);
 		localSessionFactoryBuilder.addAnnotatedClass(Supplier.class);
 		localSessionFactoryBuilder.addAnnotatedClass(User.class);
+		localSessionFactoryBuilder.addAnnotatedClass(UserRole.class);
 		return localSessionFactoryBuilder.buildSessionFactory();
 	}
 	@Autowired
