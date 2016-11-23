@@ -320,16 +320,16 @@
                 <div class="col-md-12">
                     <div id="main-slider">
                         <div class="item">
-                            <img src="<c:url value ="/resources/img/main-slider1.jpg"/>" alt="" class="img-responsive">
+                            <img src="<c:url value ="/resources/img/mainslider-1.jpg"/>" alt="" class="img-responsive">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="<c:url value ="/resources/img/main-slider2.jpg"/>" alt="">
+                            <img class="img-responsive" src="<c:url value ="/resources/img/mainslider-2.jpg"/>" alt="">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="<c:url value ="/resources/img/main-slider3.jpg"/>" alt="">
+                            <img class="img-responsive" src="<c:url value ="/resources/img/mainslider-3.jpg"/>" alt="">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="<c:url value ="/resources/img/main-slider4.jpg"/>" alt="">
+                            <img class="img-responsive" src="<c:url value ="/resources/img/mainslider-4.jpg"/>" alt="">
                         </div>
                     </div>
                     <!-- /#main-slider -->

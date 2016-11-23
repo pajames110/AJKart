@@ -1,7 +1,5 @@
 package com.aj.james.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,44 +21,45 @@ public class RegistrationController {
 	UserDAO userDao;
 
 	@RequestMapping("/register")
-	public String resgistermodel(Model model) {
+	public String registermodel(Model model) {
 		User user = new User();
 		model.addAttribute("userdetails", user);
 		return "register";
 	}
 
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public ModelAndView RegistrationForm(@ModelAttribute("userdetails") @Valid User user,BindingResult result){
-		System.out.println(" inside register ciontroller");
+	public ModelAndView RegistrationForm(@Valid @ModelAttribute("userdetails") User user,BindingResult result){
+		System.out.println(" inside register controller");
+		System.out.println(user.getUser_id());
 		
 		if (result.hasErrors()) {
 			
-			ModelAndView model = new ModelAndView("registration");
+			ModelAndView model = new ModelAndView("register");
 			return model;
 		}
 		
-		List<User> userDetail = userDao.list();
+	//	List<User> userDetail = userDao.list();
 		
-		for (int i = 0; i < userDetail.size(); i++) {
-			
-			ModelAndView model = new ModelAndView("register");
-			
-			if(user.getUserEmail().equals(userDetail.get(i).getUserEmail())){
-				model.addObject("emailError","Email already exists");
-				return model;
-			}
-			
-			if(user.getUsername().equals(userDetail.get(i).getUsername())){
-				model.addObject("userNameError","UserName already exists");
-				return model;
-			}
-			
-			if(user.getUser_mobile_number().equals(userDetail.get(i).getUser_mobile_number())){
-				model.addObject("mobileError","Mobie Number Already exists");
-				return model;
-			}
-			
-		}
+//		for (int i = 0; i < userDetail.size(); i++) {
+//			
+//			ModelAndView model = new ModelAndView("register");
+//			
+////			if(user.getUserEmail().equals(userDetail.get(i).getUserEmail())){
+////				model.addObject("emailError","Email already exists");
+////				return model;
+////			}
+////			
+////			if(user.getUsername().equals(userDetail.get(i).getUsername())){
+////				model.addObject("userNameError","UserName already exists");
+////				return model;
+////			}
+////			
+////			if(user.getUser_mobile_number().equals(userDetail.get(i).getUser_mobile_number())){
+////				model.addObject("mobileError","Mobie Number Already exists");
+////				return model;
+////			}
+//			
+//		}
 		userDao.save(user);
 		ModelAndView modelAndView = new ModelAndView("registrationsuccess");
 		return modelAndView;

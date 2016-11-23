@@ -10,6 +10,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -20,16 +21,21 @@ public class User {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int user_id;
 	
+	@NotEmpty(message="Name should not be empty")
     @Size(min=5, max=10, message="Your name should be between 5 - 10 characters.")
 	private String username;
-    
-    @NotNull(message="Please select a password")
+   
+    @NotEmpty(message="Password should not be empty")
     @Length(min=5, max=10, message="Password should be between 5 - 10 charactes")
 	private String password;
 	
+    @NotEmpty(message="Email should not be empty")
     @Pattern(regexp=".+@.+\\..+", message="Wrong email!")
 	private String userEmail;
-	private String user_mobile_number;
+    
+    @NotEmpty(message="Mobile Number should not be empty")
+    //@Pattern(regexp="(^$|[0-9]{10})")
+    private String user_mobile_number;
 	private String user_address;
 	
 	
