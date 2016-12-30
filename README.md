@@ -11,5 +11,7 @@ Maven.
 
 Requirements for the backend setup:
 Hibernate dependencies
+JUnit test case.
+
 
 
