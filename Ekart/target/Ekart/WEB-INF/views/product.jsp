@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Obaju e-commerce template">
+<meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
+<meta name="keywords" content="">
+
+
+
+<title>AjKart : e-commerce musical instruments</title>
+
+<meta name="keywords" content="">
+
+<link
+	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
+	rel='stylesheet' type='text/css'>
+
+<!-- styles -->
+<link href="<c:url value="resources/css/font-awesome.css"/>"
+	rel="stylesheet">
+<link href="<c:url value="resources/css/bootstrap.min.css"/>"
+	rel="stylesheet">
+<link href="<c:url value="resources/css/animate.min.css"/>"
+	rel="stylesheet">
+<link href="<c:url value="resources/css/owl.carousel.css"/>"
+	rel="stylesheet">
+<link href="<c:url value="resources/css/owl.theme.css"/>"
+	rel="stylesheet">
+
+
+<!-- theme stylesheet -->
+<link href="<c:url value="resources/css/style.default.css"/>"
+	rel="stylesheet" id="theme-stylesheet">
+
+<!-- your stylesheet with modifications -->
+<link href="<c:url value="resources/css/custom.css"/>" rel="stylesheet">
+
+<script src="js/respond.min.js"></script>
+
+<link rel="shortcut icon" href="favicon.png">
+
+
+
+</head>
+
+<body>
+	<!-- *** TOPBAR ***
+<%@include file="/WEB-INF/views/header.jsp"%>
+    
+    <!-- *** NAVBAR END *** -->
+
+	<!-- /.container -->
+	<form:form action="product/add" method="post" commandName="productdetails">
+		<div>
+		<table>
+			<tr>
+				<td width="22%">&nbsp;</td>
+				<td width="78%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Product ID</td>
+				<td><form:input type="text" path="product_id"></form:input></td>
+			</tr>
+			<tr>
+				<td>Product Name</td>
+				<td><form:input type="text" path="product_name"></form:input></td>
+			</tr>
+			<tr>
+				<td>Product Details</td>
+				<td><form:input type="text" path="product_description"></form:input></td>
+			</tr>
+			<tr>
+				<td>Product Price</td>
+				<td><form:input type="text" path="product_price"></form:input></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" name="submit" value="Submit"></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+		</div>
+	</form:form>
+	<!-- /#content -->
+	
+	<div align="center">
+        <table border="1" cellpadding="5">
+            <caption><h2>List of Products</h2></caption>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Description</th>
+            </tr>
+            <c:forEach var="p" items="${productdetails}">
+                <tr>
+                    <td>{p.product_id} </td>
+                    <td>{p.product_name}</td>
+                    <td>{p.product_price}</td>
+                    <td>{p.product_description}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+
+
+
+
+
+
+	<!-- *** COPYRIGHT ***
+ _________________________________________________________ -->
+	<div id="copyright">
+		<div class="container">
+			<div class="col-md-6">
+				<p class="pull-left">© 2015 Your name goes here.</p>
+
+			</div>
+			<div class="col-md-6">
+				<p class="pull-right">
+					Template by <a href="http://bootstrapious.com/e-commerce-templates">Bootstrapious</a>
+					with support from <a href="https://kakusei.cz">Kakusei</a>
+					<!-- Not removing these links is part of the licence conditions of the template. Thanks for understanding :) -->
+				</p>
+			</div>
+		</div>
+	</div>
+	<!-- *** COPYRIGHT END *** -->
+
+
+
+	<!-- /#all -->
+
+	<!-- *** FOOTER ***--!>
+
+	<%@include file="/WEB-INF/views/footer.jsp"%>
+
+    
+
+    <!-- *** SCRIPTS TO INCLUDE ***
+ _________________________________________________________ -->
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script src="js/waypoints.min.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/bootstrap-hover-dropdown.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/front.js"></script>
+
+
+
+</body>
+
+</html>
